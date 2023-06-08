@@ -10,13 +10,14 @@ function Get_novel_chat_name($url) //小說狂人爬蟲
         $novel_url = explode("/", $novel_url[1]);
         $novel_url = "//" . $novel_url[0] . "/" . $novel_url[1] . "/" . $novel_url[2];
 
-        $json = file_get_contents("https:" . $novel_url);
+        $json = file_get_contents("https:".$novel_url);
 
         //目錄使用
-        $first = explode('<li class="volume">', $json);
+        $first = explode('id="chapter-list">', $json);
         $second = explode('</ul>', $first[1]);
         $novel_list = explode('<li>', $second[0]);
         $n = 0;
+        // echo $novel_list[1];
         foreach ($novel_list as $novel_chat_data) {
             if ($n == 0) {
                 $n++;
@@ -46,7 +47,11 @@ function Get_novel_chat_text($novel_chat)
     $n = 0;
     foreach ($novel_chat as $chat_data) {
         $n++;
-        if($n<41)continue;
+        $e = 357;
+        if ($n < $e)
+            continue;
+        if ($n > ($e + 150))
+            break;
         $json = file_get_contents("https:" . $chat_data["chat_url"]);
 
         $first = explode("chapter-detail", $json);
@@ -64,7 +69,7 @@ function Get_novel_chat_text($novel_chat)
     return $novel_text;
 }
 
-function Login_check($username,$password)
+function Login_check($username, $password)
 {
     global $mysqli;
     $sql = "SELECT * FROM user_account WHERE username='" . $username . "' AND password='" . $password . "'";
@@ -86,7 +91,10 @@ function Login_check($username,$password)
 // $url = 'https://czbooks.net/n/ui01c/u5oip';
 //全職高手
 // $url = 'https://czbooks.net/n/u28b/ucpfc';
-
-$url = 'https://czbooks.net/n/cpg5omp/cpncndjm?chapterNumber=1';
+//庶女
+// $url = 'https://czbooks.net/n/cajf9h';
+//醜霸三國
+$url = 'https://czbooks.net/n/c5i48n';
 $novel_chat = Get_novel_chat_name($url);
+// print_r($novel_chat);
 Get_novel_chat_text($novel_chat);

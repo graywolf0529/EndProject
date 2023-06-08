@@ -1,7 +1,7 @@
 <?php
 $db_server = "localhost";
 $db_username = "root";
-$db_password = "123456";
+$db_password = "";
 $db_name = "EndProject";
 
 
@@ -15,4 +15,6 @@ $mysqli->set_charset('utf8');
 if ($mysqli->errno) {
     throw new RuntimeException('mysqli error: ' . $mysqli->error);
 }
+
+$mysqli->close();
 ?>
