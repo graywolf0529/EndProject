@@ -1,6 +1,8 @@
 <?php
 include("mysql.php");
 
+set_time_limit(500);
+
 //小說狂人爬蟲 - 小說全章節的連結與名稱
 function Get_novel_chat_name($url) //小說狂人爬蟲
 {
@@ -40,18 +42,21 @@ function Get_novel_chat_name($url) //小說狂人爬蟲
 }
 
 //小說狂人爬蟲 - 小說章節內容
-function Get_novel_chat_text($novel_chat)
+function Get_novel_chat_text($novel_chat,$start_chat = 0,$end_chat = 150)
 {
     global $mysqli;
-    $novel_text = array();
+    $novel_List = array();
     $n = 0;
+    $total = count($novel_chat);
     foreach ($novel_chat as $chat_data) {
+        $novel_data = array();
         $n++;
-        $e = 357;
-        if ($n < $e)
+        $e = 820;
+        if ($n < $start_chat)
             continue;
-        if ($n > ($e + 150))
+        if ($n > ($end_chat))
             break;
+
         $json = file_get_contents("https:" . $chat_data["chat_url"]);
 
         $first = explode("chapter-detail", $json);
@@ -64,9 +69,13 @@ function Get_novel_chat_text($novel_chat)
         $final = $third[0];
         echo "<h3>" . $n . "<a href='" . $chat_data['chat_url'] . "'>" . $chat_data['chat_name'] . "</a></h3>";
         echo "<h1>" . $final . "</h1>";
-        array_push($novel_text, $final);
+        $novel_data["chat_no"] = $n;
+        $novel_data["chat_url"] = $chat_data['chat_url'];
+        $novel_data["chat_name"] = $chat_data['chat_name'];
+        $novel_data["chat_txt"] = $final;
+        array_push($novel_List, $novel_data);
     }
-    return $novel_text;
+    return $novel_List;
 }
 
 function Login_check($username, $password)
@@ -94,7 +103,17 @@ function Login_check($username, $password)
 //庶女
 // $url = 'https://czbooks.net/n/cajf9h';
 //醜霸三國
-$url = 'https://czbooks.net/n/c5i48n';
+// $url = 'https://czbooks.net/n/c5i48n';
+//王者時刻
+// $url = 'https://czbooks.net/n/u3n01';
+//噩盡島一
+// $url = 'https://czbooks.net/n/cjk908';
+//噩盡島二
+// $url = 'https://czbooks.net/n/ca6g28';
+//詭秘之主
+// $url = 'https://czbooks.net/n/u3h23';
+//第一序列
+$url = 'https://czbooks.net/n/ujceb';
 $novel_chat = Get_novel_chat_name($url);
 // print_r($novel_chat);
-Get_novel_chat_text($novel_chat);
+Get_novel_chat_text($novel_chat,1070,1300);

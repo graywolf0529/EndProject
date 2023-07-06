@@ -39,6 +39,18 @@ font-family: 'Shadows Into Light', cursive;英文(草寫細
     padding: 0;
 }
 
+#gotop {
+    display: none;
+    position: fixed;
+    right: 20px;
+    bottom: 20px;    
+    padding: 10px 15px;    
+    font-size: 20px;
+    background: #777;
+    color: white;
+    cursor: pointer;
+}
+
 // 登入頁面專用
 
 .login_body{
@@ -58,4 +70,234 @@ font-family: 'Shadows Into Light', cursive;英文(草寫細
     background-color: rgba(42, 47, 62, 0.7);
     border-radius: 15px;
     margin: 0 auto;
+}
+
+//小說頁面用
+
+//ToDoList用
+*{
+    margin: 0;
+    padding: 0;
+	box-sizing: border-box;
+}
+body#ToDoListBody {
+	background: linear-gradient(90deg, rgb(84,130,255),rgb(100,255,134));
+}
+
+header#ToDoListHeader {
+	height: 20vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	h1 {
+		color: white;
+		font-size: 3rem;
+	}
+}
+
+
+#Y {
+	display: inline-block;
+	justify-content: center;
+	align-items: center;
+	width: 35%;
+}
+#M {
+	display: inline-block;
+	justify-content: center;
+	align-items: center;
+	width: 30%;
+}
+#D {
+	display: inline-block;
+	justify-content: center;
+	align-items: center;
+	width: 30%;
+}
+
+section#ToDoListSection {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+
+	div.todo {
+		width: 85vw;
+		display: flex;
+		align-items: center;
+		margin: 0.2rem 0rem;
+		
+		transition: all 0.1s ease;
+
+		p {
+			background-color: white;
+			color: black;
+			padding: 0.25rem 0.5rem;
+			font-size: 1.75rem;
+		}
+
+		p.todo-text {
+			width: 65%;
+		}
+
+		p.todo-time {
+			width: 35%;
+			text-align: center;
+		}
+
+		button {
+			padding: 0.25rem 0.5rem;
+			font-size: 1.75rem;
+			border: none;
+			cursor: pointer;
+			color: white;
+		}
+
+		button.complete {
+			background-color: rgb(50,255,50);
+			margin-bottom: 1rem;
+		}
+
+		button.trash {
+			background-color: red;
+			margin-bottom: 1rem;
+		}
+	}
+	
+}
+
+.done {
+	opacity: 0.5;
+	text-decoration: line-through;
+	text-decoration-thickness: 0.2rem;
+}
+
+div.sort {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin: 1rem 0rem;
+
+	// button {
+	// 	cursor: pointer;
+	// 	background-color: rgb(0,146,114);
+	// 	color: white;
+	// 	border: none;
+	// 	padding: 0.25rem 0.5rem;
+	// 	font-size: 1.75rem;
+	// }
+}
+
+i {
+	pointer-events: none;
+}
+
+
+
+@keyframes scaleUp {
+	from {
+		transform: scale(0);
+	}
+
+	to {
+		transform: scale(1);
+	}
+}
+
+@keyframes scaleDown {
+	to {
+		transform: scale(0);
+	}
+}
+
+@media screen and (max-width: 767px) {
+	section {
+		div.todo {
+			p {
+				font-size: 1rem;
+			}
+
+			button {
+				font-size: 1rem;
+			}
+		}
+	}
+}
+
+//GAME頁面用
+
+.bgi_cover {
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.bgi_setting {
+    background-position: center top;
+    height: 75vh;
+}
+
+.bgi_small {
+    background-position: center;
+    background-size: cover;
+    width: 200px;
+    height: 200px;
+}
+.box{
+    background-color: var(--ColorType0803);
+    color: var(--ColorType0801);
+    border: 10px double var(--ColorType0802);
+    border-radius: 20px;
+}
+.box_bgi{
+    height: 250px;
+    background-size:cover;
+    background-position: center center;
+}
+
+
+.carousel_text {
+    background-color: rgba(0, 0, 0, .3);
+}
+
+#section6{
+    background-color: lightgoldenrodyellow;
+}
+
+.section7_img {
+    height: 45vh;
+    width: 60%;
+}
+
+#section8{
+    background-color: lightcoral;
+}
+
+.section9_text {
+    background-color: rgb(0, 0, 0, .5);
+    color: aliceblue;
+    padding: 15px;
+}
+
+@media screen and (max-width: 768px) {
+    .section5_img {
+        z-index: -1;
+        right: 0;
+    }
+
+    .section5_text {
+        background-color: rgb(0, 0, 0, .5);
+        color: aliceblue;
+        padding: 15px;
+    }
+
+    .section7_img {
+        z-index: -1;
+        right: 0;
+        height: 85vh;
+        width: 100%;
+    }
+
+    #prettyderby2{
+        display: none;
+    }
 }

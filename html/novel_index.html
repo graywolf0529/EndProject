@@ -11,7 +11,51 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
 </head>
 <body>
+    <!-- ****section 1******* -->
+    <section class="bg-secondary" id="section1">
+        <div class="container text-end">
+            <a href="https://zh-tw.facebook.com/" target="_blank"><i
+                    class="fa-brands fa-square-facebook text-white"></i></a>
+            <a href="https://twitter.com/?lang=zh-Hant" target="_blank"><i
+                    class="fa-brands fa-square-twitter text-white"></i></a>
+            <a href="https://www.youtube.com/" target="_blank"><i
+                    class="fa-brands fa-square-youtube text-white"></i></a>
+            <a href="https://www.instagram.com/" target="_blank"><i
+                    class="fa-brands fa-square-instagram text-white"></i></a>
+        </div>
+    </section>
+    <!-- ****section time******* -->
+    <section class="bg-dark text-light">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 fs-3 text-center" id="now_date">2023-05-12</div>
+                <div class="col-md-6 fs-3 text-center" id="now_time">02:48</div>
+            </div>
+        </div>
+    </section>
     <script src="../js/bootstrap.bundle.min.js"></script>
     <script src="../js/jquery-3.6.4.min.js"></script>
+    <script>
+        var today = new Date();
+
+        // console.log(today.toUTCString());
+        // console.log(today.toTimeString());
+        // console.log(today.toLocaleDateString());
+        // console.log(today.toLocaleTimeString());
+
+        var time_date = document.querySelector("#now_date");
+        // console.log(time_date.textContent);
+        time_date.textContent = today.toLocaleDateString();
+
+        var time_sec = document.querySelector("#now_time");
+        time_sec.textContent = today.toLocaleTimeString();
+
+        var time_flash = setInterval(new_time, 1000);
+        function new_time() {
+            var new_time_sec = new Date();
+            var time_sec_new = document.querySelector("#now_time");
+            time_sec_new.textContent = new_time_sec.toLocaleTimeString();
+        }
+    </script>
 </body>
 </html>
