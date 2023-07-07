@@ -101,6 +101,25 @@ font-family: 'Shadows Into Light', cursive;英文(草寫細
   margin: 0 auto;
 }
 
+.novel_body {
+  background: linear-gradient(180deg, var(--ColorType0303), var(--ColorType0302), var(--ColorType0802));
+}
+
+.novel_menu {
+  background: linear-gradient(180deg, var(--ColorType0203), var(--ColorType0704));
+  color: var(--ColorType0102);
+  font-family: "Shadows Into Light", "Noto Sans TC", sans-serif, cursive;
+}
+
+.chat_name {
+  background-color: var(--ColorType0201);
+}
+
+.chat_txt {
+  background: linear-gradient(45deg, var(--ColorType0101), var(--ColorType0103));
+  color: var(--ColorType0304);
+}
+
 * {
   margin: 0;
   padding: 0;

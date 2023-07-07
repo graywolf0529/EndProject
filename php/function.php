@@ -1,6 +1,8 @@
 <?php
 include("mysql.php");
 
+header("Access-Control-Allow-Origin: *");
+
 set_time_limit(500);
 
 //小說狂人爬蟲 - 小說全章節的連結與名稱
@@ -67,8 +69,8 @@ function Get_novel_chat_text($novel_chat,$start_chat = 0,$end_chat = 150)
         $second = explode('<div class="content">', $first[1]);
         $third = explode('</div>', $second[1]);
         $final = $third[0];
-        echo "<h3>" . $n . "<a href='" . $chat_data['chat_url'] . "'>" . $chat_data['chat_name'] . "</a></h3>";
-        echo "<h1>" . $final . "</h1>";
+        // echo "<h3>" . $n . "<a href='" . $chat_data['chat_url'] . "'>" . $chat_data['chat_name'] . "</a></h3>";
+        // echo "<h1>" . $final . "</h1>";
         $novel_data["chat_no"] = $n;
         $novel_data["chat_url"] = $chat_data['chat_url'];
         $novel_data["chat_name"] = $chat_data['chat_name'];
@@ -96,24 +98,72 @@ function Login_check($username, $password)
     }
 }
 
-//異界之機關大師
+// 異界之機關大師
 // $url = 'https://czbooks.net/n/ui01c/u5oip';
-//全職高手
+// 全職高手
 // $url = 'https://czbooks.net/n/u28b/ucpfc';
-//庶女
+// 庶女
 // $url = 'https://czbooks.net/n/cajf9h';
-//醜霸三國
+// 醜霸三國
 // $url = 'https://czbooks.net/n/c5i48n';
-//王者時刻
+// 王者時刻
 // $url = 'https://czbooks.net/n/u3n01';
-//噩盡島一
+// 噩盡島一
 // $url = 'https://czbooks.net/n/cjk908';
-//噩盡島二
+// 噩盡島二
 // $url = 'https://czbooks.net/n/ca6g28';
-//詭秘之主
+// 詭秘之主
 // $url = 'https://czbooks.net/n/u3h23';
-//第一序列
-$url = 'https://czbooks.net/n/ujceb';
-$novel_chat = Get_novel_chat_name($url);
-// print_r($novel_chat);
-Get_novel_chat_text($novel_chat,1070,1300);
+// 第一序列
+// $url = 'https://czbooks.net/n/ujceb';
+
+$respond_arr = array();
+if(isset($_POST["type"])){
+    switch ($_POST["type"]) {
+        case "Login": // 登入
+            $user_data = Login_check($_POST["username"], $_POST["password"]);
+            if(Login_check($_POST["username"], $_POST["password"])){
+                $respond_arr["result"] = "登入成功";
+                $respond_arr["user_data"] = $user_data;
+            }else{
+                $respond_arr["result"] = "登入失敗";
+            }
+            break;
+        case "Get_Novel": // 獲取小說
+            $novel_chat = Get_novel_chat_name($_POST["url"]);
+            $novel_data = Get_novel_chat_text($novel_chat,$_POST["start_chat"],$_POST["end_chat"]);
+            $respond_arr["result"] = "取得小說成功";
+			$respond_arr["novel_data"] = $novel_data;
+            break;
+        case "GameData":
+            if($_POST["action"]=="List"){
+                $sql = "SELECT * FROM game_data";
+            }elseif($_POST["action"]=="Search"){
+                $sql = "SELECT * FROM game_data WHERE p_name LIKE '%".$_POST["Search_keyword"]."%' OR p_note LIKE '%".$_POST["Search_keyword"]."%'";
+            }elseif($_POST["action"]=="New"){
+                $sql = "INSERT INTO game_data (p_name,p_price,p_number,p_note,img_src) VALUES ('".$_POST["n_p_name"]."','".$_POST["n_p_price"]."','".$_POST["n_p_number"]."','".$_POST["n_p_note"]."','0302.jpg')";
+            }
+            $sql_result = $mysqli->query($sql);
+            if($_POST["type"]=="New"){
+                $respond_arr["result"] = "新增完成";
+            }else{
+                if (mysqli_num_rows($sql_result) != 0) {
+                    $respond_arr["result"] = "Select Game Data Success";
+                    $game_data = array();
+                    while ($row = $sql_result->fetch_assoc()) {
+                        // echo "<tr><td>".$row["sn"]."</td><td>".$row["p_name"]."</td><td>".$row["p_price"]."</td><td>".$row["p_number"]."</td><td>".$row["p_note"]."</td><td>".$row["Create_time"]."</td></tr>";
+                        array_push($game_data,$row);
+                    }
+                    $respond_arr["game_data"] = $game_data;
+                }else{
+                    $respond_arr["result"] = "Select Game Data False";
+                }
+            }
+            break;
+        default:
+            $respond_arr["result"] = "請輸入正確類型";
+            break;
+    }
+}
+
+echo json_encode($respond_arr,JSON_UNESCAPED_UNICODE); // 將結果轉為json編碼

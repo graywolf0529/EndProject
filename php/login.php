@@ -21,6 +21,8 @@
 <body>
     <?php
     include("mysql.php");
+    session_start();
+    $login_check = true;
     if (isset($_POST["login"])) {
         /*
         $login_check=login_check($_POST["username"],$_POST["password"]);
@@ -41,14 +43,17 @@
             while ($row = $sql_result->fetch_assoc()) {
                 array_push($user_data, $row);
             }
-            echo "<h1>登入成功</h1>";
-            session_start();
+            $mysqli->close();
             $_SESSION["username"] = $_POST["username"];
             $_SESSION["permissions"] = $user_data[0]["permissions"];
             header('Location: index.php');
         } else {
-            echo "<h1>登入失敗</h1>";
+            $mysqli->close();
+            $login_check = false;
         }
+    }elseif(isset($_POST["logout"])){
+        unset($_SESSION["username"]);
+        unset($_SESSION["permissions"]);
     }
     ?>
     <div class="login_body">
@@ -69,10 +74,16 @@
                 <div class="col-12 mt-2 mb-2 text-center">
                     <button class="btn btn-success btn-lg" type="submit" id="login" name="login" value="login">登入</button>
                 </div>
+                <div class="respone col-12 mt-2 mb-2 text-center">
+                    <?php
+                        if($login_check == false){
+                            echo "<div class='fs-1 text-danger text-center'>登入失敗</div>";
+                        }
+                    ?>
+                </div>
             </div>
         </form>
     </div>
-    <div class="respone"></div>
     <script src="../js/bootstrap.bundle.min.js"></script>
     <script src="../js/jquery-3.6.4.min.js"></script>
     <script>

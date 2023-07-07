@@ -16,5 +16,5 @@ if ($mysqli->errno) {
     throw new RuntimeException('mysqli error: ' . $mysqli->error);
 }
 
-$mysqli->close();
+// $mysqli->close();
 ?>

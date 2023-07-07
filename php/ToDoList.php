@@ -46,10 +46,13 @@
         <input type="hidden" class="">
     </section>
 
-    <script src="js/bootstrap.bundle.min.js"></script>
-    <script src="js/jquery-3.6.4.min.js"></script>
+    <script src="../js/bootstrap.bundle.min.js"></script>
+    <script src="../js/jquery-3.6.4.min.js"></script>
     <script src="../js/time.js"></script>
     <script>
+        $("#section6_link").css("display", "none");
+        $("#section7_link").css("display", "none");
+        
         let add = document.querySelector("form button");
         let section = document.querySelector("section#ToDoListSection");
         let keyList = "abcdefghijklmnopqrstuvwxyz1234567890";
