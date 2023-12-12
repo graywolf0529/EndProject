@@ -1,5 +1,5 @@
 <?php
-include("mysql.php");
+// include("mysql.php");
 
 header("Access-Control-Allow-Origin: *");
 
@@ -80,23 +80,23 @@ function Get_novel_chat_text($novel_chat,$start_chat = 0,$end_chat = 150)
     return $novel_List;
 }
 
-function Login_check($username, $password)
-{
-    global $mysqli;
-    $sql = "SELECT * FROM user_account WHERE username='" . $username . "' AND password='" . $password . "'";
-    $sql_result = $mysqli->query($sql);
-    if (mysqli_num_rows($sql_result) != 0) {
-        $user_data = array();
-        while ($row = $sql_result->fetch_assoc()) {
-            array_push($user_data, $row);
-        }
-        // echo "<h1>登入成功</h1>";
-        return $user_data;
-    } else {
-        // echo "<h1>登入失敗</h1>";
-        return false;
-    }
-}
+// function Login_check($username, $password)
+// {
+//     global $mysqli;
+//     $sql = "SELECT * FROM user_account WHERE username='" . $username . "' AND password='" . $password . "'";
+//     $sql_result = $mysqli->query($sql);
+//     if (mysqli_num_rows($sql_result) != 0) {
+//         $user_data = array();
+//         while ($row = $sql_result->fetch_assoc()) {
+//             array_push($user_data, $row);
+//         }
+//         // echo "<h1>登入成功</h1>";
+//         return $user_data;
+//     } else {
+//         // echo "<h1>登入失敗</h1>";
+//         return false;
+//     }
+// }
 
 // 異界之機關大師
 // $url = 'https://czbooks.net/n/ui01c/u5oip';

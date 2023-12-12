@@ -116,8 +116,8 @@ font-family: 'Shadows Into Light', cursive;英文(草寫細
 }
 
 .chat_txt {
-  background: linear-gradient(45deg, var(--ColorType0101), var(--ColorType0103));
-  color: var(--ColorType0304);
+  background: linear-gradient(45deg, var(--ColorType0204), var(--ColorType0304));
+  color: white;
 }
 
 * {
