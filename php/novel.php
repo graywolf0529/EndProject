@@ -50,6 +50,12 @@
             <p>https://czbooks.net/n/s6bedg</p>
             獵網
             <p>https://czbooks.net/n/u6hk</p>
+            王牌
+            <p>https://czbooks.net/n/um8nm</p>
+            一級安保
+            <p>https://czbooks.net/n/s664a</p>
+            雙劍
+            <p>https://czbooks.net/n/uljgj</p>
             噩盡島一
             <p>https://czbooks.net/n/cjk908</p>
             噩盡島二
@@ -63,7 +69,9 @@
             異界之機關大師
             <p>https://czbooks.net/n/ui01c/u5oip</p>
             重生之賊行天下
-            <p>https://czbooks.net/n/s6181</p>          
+            <p>https://czbooks.net/n/s6181</p>
+            修真聊天群
+            <p>https://czbooks.net/n/s6lf47</p>
             </div>
         </div>
         <div class="text-center mt-2">
