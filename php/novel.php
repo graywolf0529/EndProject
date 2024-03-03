@@ -69,9 +69,7 @@
             異界之機關大師
             <p>https://czbooks.net/n/ui01c/u5oip</p>
             重生之賊行天下
-            <p>https://czbooks.net/n/s6181</p>
-            修真聊天群
-            <p>https://czbooks.net/n/s6lf47</p>
+            <p>https://czbooks.net/n/s6181</p>          
             </div>
         </div>
         <div class="text-center mt-2">
@@ -103,9 +101,10 @@
 
         var chat_num = -1;
         $("#Next_chat").click(function () {
-            chat_num =parseInt($("#end_chat").val()) + 1;
-            $("#start_chat").val(chat_num);
-            $("#end_chat").val(chat_num);
+            chat_num_s =parseInt($("#end_chat").val()) + 1;
+            chat_num_e = chat_num_s + 10;
+            $("#start_chat").val(chat_num_s);
+            $("#end_chat").val(chat_num_e);
             var url = $("#url").val();
             var start_chat = $("#start_chat").val();
             var end_chat = $("#end_chat").val();
@@ -173,9 +172,10 @@
         function keyFunction() {
 	        // alert("Key code = " + event.keyCode);
             if(event.keyCode == "39"){
-                chat_num =parseInt($("#end_chat").val()) + 1;
-                $("#start_chat").val(chat_num);
-                $("#end_chat").val(chat_num);
+                chat_num_s =parseInt($("#end_chat").val()) + 1;
+                chat_num_e =chat_num_s + 10;
+                $("#start_chat").val(chat_num_s);
+                $("#end_chat").val(chat_num_e);
                 var url = $("#url").val();
                 var start_chat = $("#start_chat").val();
                 var end_chat = $("#end_chat").val();
