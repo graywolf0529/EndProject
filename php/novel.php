@@ -173,7 +173,7 @@
 	        // alert("Key code = " + event.keyCode);
             if(event.keyCode == "39"){
                 chat_num_s =parseInt($("#end_chat").val()) + 1;
-                chat_num_e =chat_num_s + 10;
+                chat_num_e =chat_num_s + 19;
                 $("#start_chat").val(chat_num_s);
                 $("#end_chat").val(chat_num_e);
                 var url = $("#url").val();
