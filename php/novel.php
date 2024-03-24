@@ -18,7 +18,7 @@
             <div class="col-12 fs-2 text-center">小說狂人爬蟲</div>
             <div class="col-md-6 text-center">
                 <label for="url">小說網址</label>
-                <input class="form-control" type="text" id="url" placeholder="https://czbooks.net/n/ujceb" value='https://czbooks.net/n/ujceb'>
+                <input class="form-control" type="text" id="url" placeholder="https://czbooks.net/n/ujceb" value='https://czbooks.net/n/s6p6i6'>
             </div>
             <div class="col-md-2 text-center">
                 <label for="start_chat">開始章節</label>
@@ -46,6 +46,8 @@
             <p>https://czbooks.net/n/c5i48n</p>
             第一序列
             <p>https://czbooks.net/n/ujceb</p>
+            夜的命名術
+            <p>https://czbooks.net/n/s6p6i6</p>
             賊警
             <p>https://czbooks.net/n/s6bedg</p>
             獵網
@@ -102,7 +104,7 @@
         var chat_num = -1;
         $("#Next_chat").click(function () {
             chat_num_s =parseInt($("#end_chat").val()) + 1;
-            chat_num_e = chat_num_s + 10;
+            chat_num_e = chat_num_s + 20;
             $("#start_chat").val(chat_num_s);
             $("#end_chat").val(chat_num_e);
             var url = $("#url").val();
@@ -173,7 +175,7 @@
 	        // alert("Key code = " + event.keyCode);
             if(event.keyCode == "39"){
                 chat_num_s =parseInt($("#end_chat").val()) + 1;
-                chat_num_e =chat_num_s + 19;
+                chat_num_e =chat_num_s + 29;
                 $("#start_chat").val(chat_num_s);
                 $("#end_chat").val(chat_num_e);
                 var url = $("#url").val();
@@ -205,9 +207,10 @@
                     })
                 }
             }else if(event.keyCode == "37"){
-                chat_num =parseInt($("#end_chat").val()) - 1;
-                $("#start_chat").val(chat_num);
-                $("#end_chat").val(chat_num);
+                e_chat_num =parseInt($("#end_chat").val()) - 1;
+                s_chat_num =parseInt($("#end_chat").val()) - 11;
+                $("#start_chat").val(s_chat_num);
+                $("#end_chat").val(e_chat_num);
                 var url = $("#url").val();
                 var start_chat = $("#start_chat").val();
                 var end_chat = $("#end_chat").val();
