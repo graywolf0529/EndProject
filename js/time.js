@@ -12,6 +12,8 @@ function new_time() {
     var new_time_sec = new Date();
     var time_sec_new = document.querySelector("#now_time");
     time_sec_new.textContent = new_time_sec.toLocaleTimeString();
+    var time_sec_new2 = document.querySelector("#now_time2");
+    time_sec_new2.textContent = new_time_sec.toLocaleTimeString();
 }
 
 $(function(){

@@ -84,4 +84,4 @@
     </section>
 </header>
 
-<div id="gotop"><i class="fa-solid fa-arrow-turn-up"></i></div>
+<div id="gotop"><i class="fa-solid fa-arrow-turn-up"></i><div class="fs-6" id="now_time2">02:48</div></div>
